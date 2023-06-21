@@ -1,0 +1,347 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
+
+    .landingpage {
+        background-image: url(./landingpage.jpg);
+        background-position: center;
+        background-size: 100% 105%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        
+    }
+    
+    .heropage {
+        background-image: url(./landing\ 2.jpg);
+        filter: brightness(60%);
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+    }
+    .navbar {
+        background-color: #f5f5f5;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+    .logo {
+        width: 140px;
+        height: 95px;
+    }
+    .nav-item {
+        position: relative;
+        display: inline-block;
+        color: #000;
+        text-decoration: none;
+    }
+
+
+    .nav-item::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #0d6efd;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-item:hover::after {
+        transform: scaleX(1);
+    }
+
+    .arrow {
+        font-weight: bolder !important;
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-item:hover .arrow { 
+        transform: rotate(180deg);   
+    }
+    .coursedrop {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #f5f5f5;
+        font-size: 14px;
+        border-radius: 5px;
+        
+    }
+
+    .coursedrop a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #3790ca;
+        padding: 15px;
+    } 
+    .coursedrop a:hover {
+        background-color: #a5bcdf;
+    }
+    .nav-item:hover .coursedrop {
+        display: block;
+        /* transform: translateY(5%); */
+        /* transition: transform 0.4s ease-in-out; */
+        
+    }
+
+    .collectiondrop {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left:    0;
+        background-color: #f5f5f5;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+    .collectiondrop a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #3790ca;
+        padding: 15px;
+    }
+    .collectiondrop a:hover {
+        background-color: #a5bcdf;  
+    }
+    .nav-item:hover .collectiondrop{
+        display: block;
+    }
+
+    .carousel-inner {
+        position: relative;
+    }
+    .carousel-item {
+        position: relative;
+    }
+
+    .carousel-caption {
+        position: absolute;
+        top: 50%;
+        left: 12%;
+        transform: translate(-50%, -50%);
+        align-items: center;
+        justify-items: center;
+        margin-top: 10rem;
+        text-align: center;
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.7);
+        transform: translateY(2rem);
+        padding: 130px;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+    }
+    .carousel-item.active .carousel-caption {
+        display: flex;
+        opacity: 1;
+        transition: opacity 0.6s ease;
+        width: 75%;
+        height: 45vh;
+    } 
+    .carousel-item.next .carousel-caption, .carousel-item.previous .carousel-caption {
+        display: flex;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .carouselText {
+        display: flex;
+        flex-direction: column;
+        text-align: justify;
+    
+    }
+    .carouselTextHeadline {
+        font-size: 26px;
+        font-family: 'Ropa Sans', sans-serif; 
+        font-weight: bold;
+
+    }
+    .carouselTextContent {
+        font-size: 16px;
+        font-family: 'Ropa Sans', sans-serif; 
+        color: black;
+        line-height: 1rem;
+    }
+    .carouselTextContent a:hover {
+        text-decoration: underline !important;
+    }
+    
+
+    
+    
+</style>
+<body>
+
+    <section >
+        <!-- <div class="landingpage"> -->
+       
+        <!-- </div> -->
+
+        <div class="hero">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                <div><img src="./elibrary logo.png" class="img img-fluid logo" alt="" srcset=""></div>
+                 
+                <div>
+                    <ul class="nav home d-flex gap-3 fw-bold ">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">ABOUT US</a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link "  href="#">COURSES <i class="bi bi-chevron-down arrow fw-bold"></i></a>
+                        
+                        <div class="coursedrop">    
+                              <a class="dropdown-item" href="#">HISTORY</a>
+                              <a class="dropdown-item" href="#">DATA ANALYSIS</a>
+                              <a class="dropdown-item" href="#">POLITICAL SCIENCE</a>
+                              <hr class="dropdown-divider">
+                              <a class="dropdown-item" href="#">SOFTWARE ENGINEERING</a>
+                        </div>
+
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link "  href="#">COLLECTIONS <i class="bi bi-chevron-down arrow fw-bold"></i></a>
+                        
+                        <div class="collectiondrop">    
+                              <a class="dropdown-item" href="#">BOOKS</a>
+                              <a class="dropdown-item" href="#">JOURNALS</a>
+                              <a class="dropdown-item" href="#">WORKING PAPERS</a>
+                        </div>
+
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">RECOMMENDED READINGS</a>
+                      </li>
+
+                      <li class="nav-item login">
+                        <a class="nav-link" href="#">LOGIN | REGISTER</a>
+                      </li>
+                     
+                    </ul>
+                  </div>
+                </div>
+            </nav>
+              <div class="heropage">
+
+                <div class="">
+                    <!-- carouselExampleAutoplaying -->
+                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <img class="img-fluid w-100 h-100" src="./landing 2.jpg" alt="Background Image">
+
+                          <!-- slide -->
+                            <div class="carousel-item active ">
+                                <!-- <img class="img-fluid w-50 h-50" src="./landing 2.jpg" alt="Background Image"> -->
+                                <div class="carousel-caption gap-5">
+                                  <img class="img-fluid w-25" src="./europe.jpg" alt="">
+                                  <div class="carouselText ">
+                                    <span class="text-dark">APRIL, 2023</span>
+                                    <h1 class="carouselTextHeadline text-dark">Europe and Central Asia Economic Update, Spring 2023: Weak Growth, High Inflation, and a Cost-of-Living Crisis</h1>
+                                    <p class="carouselTextContent">Economic growth slowed sharply last year in Europe and Central Asia, as Russia's invasion of Ukraine, a surge in inflation, and the sharp tightening of monetary policy and financing conditions hit private consumption and trade.The poorest households faced inflation that was more than 2 percentage points higher than the inflation faced by the richest households, with this difference exceeding 5 percentage points in some countries. <br>
+                                        <a class="text-decoration-none" href="">READ MORE</a></p>
+
+                                  </div>
+                                  
+                                  
+                                  <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                  </button>
+                                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                  </button>
+                                </div>
+                              </div>
+
+                            <div class="carousel-item ">
+                                <!-- <img class="img-fluid w-50 h-50" src="./landing 2.jpg" alt="Background Image"> -->
+                                <div class="carousel-caption gap-5">
+                                    <img class="img-fluid w-25" src="./africa.jpg" alt="">
+                                    <div class="carouselText ">
+                                      <span class="text-dark">JUNE, 2023</span>
+                                      <h1 class="carouselTextHeadline text-dark">Digital Africa: Technological Transformation for Jobs</h1>
+                                      <p class="carouselTextContent">All African countries need better and more jobs for their growing populations. Digital Africa: Technological Transformation for Jobs shows that broader use of productivity-enhancing, digital technologies by enterprises and households is imperative to generate such jobs, including for lower-skilled people. At the same time, it can support not only countries’ short-term objective of postpandemic economic recovery but also their vision of economic transformation with more inclusive growth. <br>
+                                          <a class="text-decoration-none" href="">READ MORE</a></p>
+  
+                                    </div>
+                                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                  </button>
+                                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                  </button>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <!-- <img class="img-fluid w-50 h-50" src="./landing 2.jpg" alt="Background Image"> -->
+                                <div class="carousel-caption gap-5 ">
+                                    <img class="img-fluid w-25" src="./economics.jpg" alt="">
+                                    <div class="carouselText ">
+                                      <span class="text-dark">MAY, 2023</span>
+                                      <h1 class="carouselTextHeadline text-dark">The Economics of Water Scarcity in the Middle East and North Africa: Institutional Solutions</h1>
+                                      <p class="carouselTextContent">Despite massive infrastructure investments, countries in the Middle East and North Africa (MENA) region continue to face unprecedented water scarcity due to climate change,Policy makersthe unsustainability of water allocations and that increasing investments in new infrastructure and technologies to increase wat a growing financial burden on governments. <br>
+                                          <a class="text-decoration-none" href="">READ MORE</a></p>
+  
+                                    </div>
+                                  <div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                      </button>
+                                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                      </button>
+
+                                  </div>
+                                  
+                                </div>
+                             </div>
+                        </div>
+                        
+                      </div>
+                </div>
+                
+              </div>
+
+        </div>
+
+        </div>
+ 
+    </section>
+    
+</body>
+<script>
+    $(document).ready(function () {
+        $('.carousel-item').carousel-item({
+            interval: 3000,
+            hover: 'pause'
+        
+        })
+        
+    })
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</html>

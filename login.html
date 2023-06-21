@@ -1,0 +1,303 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<style>  
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Ropa+Sans&display=swap');
+
+  
+     body {
+        padding: 0;
+        margin: 0;
+        background-color: #edeaea;
+    }
+    .loginPage {
+        position: relative;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        z-index: 1;
+    }
+    .loginWrapper {      
+        text-align: center;
+    }
+    
+    .logo-img {
+       
+        /* width: 15rem; */
+        align-content: center;
+        justify-content: center;
+        
+    }
+    .loginText {
+        display: inline-block;
+        text-align: center;
+    }
+    .loginText h2 {
+        color: #353535;
+        font-size: 18px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+    }
+    .loginText p {
+        color: #353535;
+        font-size: 14px;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 400;
+        
+    }
+    .loginLink button {
+        background-color: #ffff;
+        border: 1px solid #d9d6d6;
+        border-radius: 5px;   
+        text-align: center;
+    }
+    .loginLink button:hover {
+        background-color: rgb(184, 226, 245);
+        color: rgb(65, 65, 241);
+    }
+
+    .loginLink img {
+        width: 30px;
+        
+    }
+    
+    .label {
+        position: absolute;
+        top: 7%;
+        left: 0.5%;
+        transform: translateY(-10%);
+        transform: translateX(85%);
+        transition: transform 0.4s ease-in-out;
+        color: #353535;
+        font-size: 14px;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 400;
+    }
+    .zoom {
+        transform: translateY(-95%) scale(0.8);
+    }
+    .input {
+        border: 0;
+        outline: 0;
+        border-bottom: 1px solid #0d6efd;
+    }
+    
+    .sign-upLink {
+        color: #353535;
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .sign-upLink span:hover {
+        cursor: pointer;
+        color: black;
+    }
+    .footer {
+        /* background:linear-gradient(to right, #b1afaf, rgb(107, 104, 104)) ; */
+        background-color: white;
+        height: 8rem;
+        position: absolute;
+        bottom: 6px;
+        text-align: center;
+    }
+    .footer a {
+        text-decoration: none;
+    }
+    .footerWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        transform: translateX(-29%);
+    }
+    .footerImg {
+        align-content: center;
+        justify-content: center;
+        transform: translateX(30%);
+        margin-bottom: 10px;
+ 
+    }
+    .footerLink {
+        display: flex !important;
+        gap: 18px;
+        padding: 30px;
+    }  
+    .footerLink a {
+        color: #5a5858;
+        font-size: 14px;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 400;
+    }
+    .footerLink  a:hover {
+        color: #1a1919;
+    }
+    .arrow, .arroww  {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+    .footerLink a:hover .arrow {
+        transform: rotate(180deg);
+    }
+  
+   .footerLink a:nth-child(3):hover .arrow {
+        transform: rotate(270deg);
+   }
+   .footerLink a:nth-child(3):focus .arrow {
+        transform: rotate(270deg);
+   }
+
+   .dropSide {
+        display: none;
+        position: absolute;
+        left: 90%;
+    }
+    .footerLink a:nth-child(3):hover .dropSide {
+        display: block;
+    }
+ 
+    .footerLink a:nth-child(3):hover + .dropSide, .dropSide.active {
+        display: block;
+    }
+
+    
+    
+
+</style>
+<body>
+    <section class="col-md-  ">
+        <div class="container loginPage bg-white col-md-7 d-flex align-content-center
+        justify-content-center rounded-2 shadow">
+            <div class="loginWrapper col-md-7 border rounded-2 shad">
+                <div class="logo-img">
+                    <img class="w-50 " src="./Landing Images/elibrary_logo3-removebg-preview.png" alt="">
+
+                </div>
+            
+                <div class="loginText ">
+                    <h2>Sign in to CONNECT</h2>
+                    <p>to continue to the Online eLibrary</p>
+                </div> 
+
+    
+                <div class="loginLink d-flex flex-wrap align-content-center justify-content-center  gap-1 mt-3">
+                    <button class="d-flex align-items-center justify-items-center ">
+                        <img class="img-fluid  logo" src="./LOGIN IMAGES/google_logo-removebg-preview.png" alt=""><span>Google</span>
+                    </button>
+                    <button class="d-flex align-items-center justify-items-center">
+                        <img class="img-fluid logo" src="./LOGIN IMAGES/Twitter-logo-removebg-preview.png" alt=""><span>Twitter</span>
+                    </button>
+                    <button class="d-flex align-items-center justify-items-center">
+                        <img class="img-fluid logo" src="./LOGIN IMAGES/Apple-Logo-removebg-preview.png" alt=""><span>Apple</span>
+                    </button>
+                    <button class="d-flex align-items-center justify-items-center">
+                        <img class="img-fluid logo" src="./LOGIN IMAGES/window_logo-removebg-preview.png" alt=""><span>Window</span>
+                    </button>
+                    
+                </div> 
+    
+                <div class="input-container position-relative mt-5">
+                    <input type="email" name="" id="input" class="input col-md-10" required>
+                    <label for="email" id="label" class="label">Email</label>
+                    <div class=" invalid-feedback">
+                        Enter a valid Email
+
+                    </div>
+                </div> <br>
+    
+                <div><button class="btn bg-primary text-white col-md-10 mt-2" onclick="proceed()">Continue</button></div>
+                
+                <div class="sign-upLink mt-4">Are you a new user?<span> <a class="text-primary text-decoration-none fw-bold" href="" onclick="signUp()" >Sign up</a></span></div>
+              
+            </div>
+            <div class=" ">
+                <img class="img-fluid" src="./Landing Images/removed bg.png" alt="">
+            </div>
+
+        </div>
+
+        <div class="footer col-sm-12 col-md-12 d-flex ">
+            <div class="container footerWrapper col-md-5 d-flex">
+                <div class="footerImg ">
+                    <img class=" w-100 " src="./LOGIN IMAGES/connect-removebg-preview.png" alt="">
+                </div>
+
+                <div class="footerLink col-md-9 gap- ">
+                    <a href="">About</a>
+                    <a href="">Privacy & Terms <i class="bi bi-chevron-down arrow" ></i></a>
+
+                    <a class="dropSideParent" href="" >Help Center <i class="bi bi-chevron-down arrow" ></i>
+                        <div class="dropSide">
+                            <a href=""><img class=" w-50" src="./LOGIN IMAGES/whatsapp-removebg-preview.png" alt=""></a>
+                            <a href=""><img class="mt-1 w-50" src="./LOGIN IMAGES/Twitter-logo-removebg-preview.png" alt=""></a>
+                            <a href=""><img class="mt-1 w-50" src="./LOGIN IMAGES/linkin-removebg-preview.png" alt=""></a>
+                        </div>
+                    </a>
+
+                        
+                </div>
+                 
+            </div>
+     
+        </div>
+        
+    </section>
+    
+</body>
+<script>
+    // INPUT LABEL ANIMATION
+    let label = document.getElementById('label')
+    let input = document.getElementById('input')
+
+    input.addEventListener('focus', function () {
+        label.classList.add('zoom') 
+    })
+
+    input.addEventListener('blur', function () {
+        if (!input.value) {
+        label.classList.remove('zoom')      
+        }
+    })
+
+
+    // INPUT TEXT BOX REGEX
+    document.querySelector('#input').addEventListener('blur', validateEmail)
+    function validateEmail() {
+        let input = document.querySelector('#input')
+        const re = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+\.+[a-zA-Z]{3}$/
+       
+        if (!re.test(input.value)) {
+            input.classList.add('is-invalid')
+            
+        } 
+        else {
+            input.classList.remove('is-invalid')         
+        }    
+    }
+
+    // FOOTER THIRD LINK DROPDOWN STAYING
+    const dropSideParent = document.querySelector('.dropSideParent')
+    const dropSide = document.querySelector('.dropSide')
+
+    dropSideParent.addEventListener('click', function (event) {
+        event.preventDefault();
+        dropSide.classList.toggle('active')
+        
+    })
+
+    // MOVE TO SIGN UP PAGE 
+    function signUp() {
+        window.location.href = "signup.html";
+        
+    }
+
+
+
+
+    
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</html>
