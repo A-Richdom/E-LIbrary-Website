@@ -200,18 +200,19 @@
                 </div> 
     
                 <div class="input-container position-relative mt-5">
-                    <input type="email" name="" id="input" class="input col-md-10" required>
+                    <input type="email"  autocomplete="on"  name="" value="" multiple id="input" class="input col-md-10" list="emailSuggestions" required>
                     <label for="email" id="label" class="label">Email</label>
+                    
                     <div class=" invalid-feedback">
-                        Enter a valid Email
-
+                        Please Enter a valid Email 
                     </div>
                 </div> <br>
     
                 <div><button class="btn bg-primary text-white col-md-10 mt-2" onclick="proceed()">Continue</button></div>
                 
                 <div class="sign-upLink mt-4">Are you a new user?<span> <a class="text-primary text-decoration-none fw-bold" href="#" onclick="signUp()" >Sign up</a></span></div>
-                <div class="d-none text-center">
+                
+                <div class="spinner d-none text-center">
                     <div class="spinner-grow text-primary" id="spinner" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
@@ -237,8 +238,8 @@
 
                     <a class="dropSideParent" href="" >Help Center <i class="bi bi-chevron-down arrow" ></i>
                         <div class="dropSide">
-                            <a href=""><img class=" w-50" src="./LOGIN IMAGES/whatsapp-removebg-preview.png" alt=""></a>
-                            <a href=""><img class="mt-1 w-50" src="./LOGIN IMAGES/Twitter-logo-removebg-preview.png" alt=""></a>
+                            <a href="https://wa.me/2349034648639"><img class=" w-50" src="./LOGIN IMAGES/whatsapp-removebg-preview.png" alt=""></a>
+                            <a href="https://twitter.com/@iam_anigilaje"><img class="mt-1 w-50" src="./LOGIN IMAGES/Twitter-logo-removebg-preview.png" alt=""></a>
                             <a href=""><img class="mt-1 w-50" src="./LOGIN IMAGES/linkin-removebg-preview.png" alt=""></a>
                         </div>
                     </a>
@@ -284,6 +285,37 @@
         }    
     }
 
+    //EMAIL INPUT-TEXT BOX STORAGE
+    let inputEmail = document.getElementById("input")
+
+        inputEmail.addEventListener("input", function () {
+
+        localStorage.setItem("email", inputEmail.value);
+    
+    })
+
+        var savedEmail = JSON.parse(localStorage.getItem("email"))
+
+        if (savedEmail) {
+        inputEmail.value = savedEmail;
+    
+    }
+
+    // PROCEED TO NEXT PAGE FUNCTION
+    function proceed() {
+        
+    }
+
+     // LINK TO SIGN-UP PAGE 
+     function signUp() {
+        document.querySelector(".spinner").style.display = "block"
+
+        setTimeout(function() {
+            window.location.href = "signup.html";
+            
+        }, 1000);          
+    }
+
     // FOOTER THIRD LINK DROPDOWN STAYING
     const dropSideParent = document.querySelector('.dropSideParent')
     const dropSide = document.querySelector('.dropSide')
@@ -293,19 +325,6 @@
         dropSide.classList.toggle('active')
         
     })
-
-    // MOVE TO SIGN UP PAGE 
-    function signUp() {
-        document.getElementById("spinner").style.display = "block"
-        setTimeout(function() {
-            window.location.href = "signup.html";
-            
-        }, 30000);
-        
-        
-    }
-
-
 
 
     

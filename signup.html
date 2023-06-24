@@ -85,7 +85,6 @@
         font-size: 14px;
         font-family: 'Montserrat', sans-serif;
         font-family: 400;
-
     }
     .passwordLabel {
         position: absolute;
@@ -227,10 +226,10 @@
 
     
                 <div class="loginLink d-flex flex-wrap align-content-center justify-content-center  gap-1 mt-3">
-                    <button class="d-flex align-items-center justify-items-center ">
+                    <button class="d-flex align-items-center justify-items-center " onclick="googleLink()">
                         <img class="img-fluid  logo" src="./LOGIN IMAGES/google_logo-removebg-preview.png" alt=""><span>Google</span>
                     </button>
-                    <button class="d-flex align-items-center justify-items-center">
+                    <button class="d-flex align-items-center justify-items-center"  onclick="twitterLink()">
                         <img class="img-fluid logo" src="./LOGIN IMAGES/Twitter-logo-removebg-preview.png" alt=""><span>Twitter</span>
                     </button>
                     <button class="d-flex align-items-center justify-items-center">
@@ -245,19 +244,28 @@
                 </div> 
     
                 <div class="input-container position-relative mt-5">
-                    <input type="text" name="" autocomplete="on" id="nameInput" class="nameInput col-md-10" required>
-                    <label for="name" id="nameLabel" class="nameLabel">Name</label>  
-                    <input type="email" multiple name="" id="emailInput" class="emailInput mt-4 col-md-10"  required>
-                    <label for="email" id="emailLabel" class="emailLabel">Email</label>
-                    <input type="password" name="" id="passwordInput" class="passwordInput mt-4 col-md-10" required>
-                    <i class="bi bi-eye-slash" id="biEye"></i> 
-                    <label for="password" id="passwordLabel" class="passwordLabel">Password</label>
-                    
-                    
-                        <div class=" invalid-feedback">
-                        Enter a valid Email
-                    </div>
 
+                    <div>
+                        <input type="text" name="" autocomplete="on" id="nameInput" class="nameInput col-md-10" required>
+                        <label for="name" id="nameLabel" class="nameLabel">Name</label> 
+                        <div class="invalid-feedback">Surname,First Name & (Optional Name)</div>
+                    </div>
+                             
+                    <div>
+                        <input type="email" multiple name="" id="emailInput" class="emailInput mt-4 col-md-10"  required>
+                        <label for="email" id="emailLabel" class="emailLabel">Email</label>
+                        <div class="invalid-feedback">Enter a Valid Email</div>
+                    </div>
+                    
+                    <div>
+                        <input type="password" name="" id="passwordInput" class="passwordInput mt-4 col-md-10" required>
+                        <i class="bi bi-eye-slash" id="biEye"></i> 
+                        <label for="password" id="passwordLabel" class="passwordLabel">Password</label>
+                        <div class="invalid-feedback">
+                            *Must be 5 digit number
+                        </div>
+                    </div>
+                    
                 </div> <br>
     
                 <div><button class="btn bg-primary text-white col-md-10 mt-2" onclick="proceed()">Continue</button></div>
@@ -283,8 +291,8 @@
 
                     <a class="dropSideParent" href="" >Help Center <i class="bi bi-chevron-down arrow" ></i>
                         <div class="dropSide">
-                            <a href=""><img class=" w-50" src="./LOGIN IMAGES/whatsapp-removebg-preview.png" alt=""></a>
-                            <a href=""><img class="mt-1 w-50" src="./LOGIN IMAGES/Twitter-logo-removebg-preview.png" alt=""></a>
+                            <a href="https://wa.me/2349034648639"><img class=" w-50" src="./LOGIN IMAGES/whatsapp-removebg-preview.png" alt=""></a>
+                            <a href="https://twitter.com/@iam_anigilaje"><img class="mt-1 w-50" src="./LOGIN IMAGES/Twitter-logo-removebg-preview.png" alt=""></a>
                             <a href=""><img class="mt-1 w-50" src="./LOGIN IMAGES/linkin-removebg-preview.png" alt=""></a>
                         </div>
                     </a>
@@ -361,7 +369,63 @@
     })
     
 
-    // FOOTER THIRD LINK DROPDOWN STAYING
+    // NAME TEXT-BOX REGEX
+    document.getElementById('nameInput').addEventListener('blur', validateName);
+    document.getElementById('emailInput').addEventListener('blur', validateEmail);
+    document.getElementById('passwordInput').addEventListener('blur', validatePassword);
+
+    function validateName() {
+        let re = /^[a-zA-Z]+ [a-zA-Z]+ [a-zA-Z]+$/
+
+        if (!re.test(nameInput.value)) {
+            nameInput.classList.add('is-invalid')
+            
+        } else {
+            nameInput.classList.remove('is-invalid')  
+        }
+    }
+
+    function validateEmail() {
+        let re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+
+        if (!re.test(emailInput.value)) {
+            emailInput.classList.add('is-invalid')
+            
+        } else {
+            emailInput.classList.remove('is-invalid')
+        }  
+    }
+
+    function validatePassword() {
+        let re = /^\d{5}$/
+
+        if (!re.test(passwordInput.value)) {
+            passwordInput.classList.add('is-invalid')
+            
+        } else {
+            passwordInput.classList.remove('is-invalid')
+        }     
+    }
+
+    //PROCEED TO LOG-IN PAGE FUNCTION
+    function proceed() {
+       
+        if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
+            alert("Please Fill in all Fields")
+        } 
+        else {
+            window.location.assign("login.html")       
+        }
+        
+    }
+  
+      // MOVE TO SIGN IN PAGE 
+      function signIn() {
+        window.location.assign("login.html")
+        
+      }
+
+        // FOOTER THIRD LINK DROPDOWN STAYING
     const dropSideParent = document.querySelector('.dropSideParent')
     const dropSide = document.querySelector('.dropSide')
 
@@ -370,11 +434,6 @@
         dropSide.classList.toggle('active')     
     })
 
-      // MOVE TO SIGN IN PAGE 
-      function signIn() {
-        window.location.assign("login.html")
-        
-      }
     
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
