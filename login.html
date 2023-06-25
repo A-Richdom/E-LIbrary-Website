@@ -155,6 +155,7 @@
         position: absolute;
         left: 90%;
     }
+
     .footerLink a:nth-child(3):hover .dropSide {
         display: block;
     }
@@ -163,7 +164,6 @@
         display: block;
     }
 
-    
     
 
 </style>
@@ -184,10 +184,10 @@
 
     
                 <div class="loginLink d-flex flex-wrap align-content-center justify-content-center  gap-1 mt-3">
-                    <button class="d-flex align-items-center justify-items-center ">
+                    <button class="d-flex align-items-center justify-items-center" onclick="google()">
                         <img class="img-fluid  logo" src="./LOGIN IMAGES/google_logo-removebg-preview.png" alt=""><span>Google</span>
                     </button>
-                    <button class="d-flex align-items-center justify-items-center">
+                    <button class="d-flex align-items-center justify-items-center" onclick="twitter()">
                         <img class="img-fluid logo" src="./LOGIN IMAGES/Twitter-logo-removebg-preview.png" alt=""><span>Twitter</span>
                     </button>
                     <button class="d-flex align-items-center justify-items-center">
@@ -255,6 +255,15 @@
     
 </body>
 <script>
+
+    //LOGIN LINKs FUNCTION
+    function google() {
+        window.location.href = "https://google.com"       
+    }
+    function twitter() {
+        window.location.href = "https://twitter.com"
+        
+    }
     // INPUT LABEL ANIMATION
     let label = document.getElementById('label')
     let input = document.getElementById('input')

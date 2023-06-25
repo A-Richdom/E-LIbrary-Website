@@ -227,10 +227,10 @@
 
     
                 <div class="loginLink d-flex flex-wrap align-content-center justify-content-center  gap-1 mt-3">
-                    <button class="d-flex align-items-center justify-items-center " onclick="googleLink()">
+                    <button class="d-flex align-items-center justify-items-center " onclick="google()">
                         <img class="img-fluid  logo" src="./LOGIN IMAGES/google_logo-removebg-preview.png" alt=""><span>Google</span>
                     </button>
-                    <button class="d-flex align-items-center justify-items-center"  onclick="twitterLink()">
+                    <button class="d-flex align-items-center justify-items-center"  onclick="twitter()">
                         <img class="img-fluid logo" src="./LOGIN IMAGES/Twitter-logo-removebg-preview.png" alt=""><span>Twitter</span>
                     </button>
                     <button class="d-flex align-items-center justify-items-center">
@@ -290,7 +290,7 @@
                     <a href="">About</a>
                     <a href="">Privacy & Terms <i class="bi bi-chevron-down arrow" ></i></a>
 
-                    <a class="dropSideParent" href="" >Help Center <i class="bi bi-chevron-down arrow" ></i>
+                    <a class="dropSideParent" href="" >Help Center <i class="bi bi-chevron-down arrow"></i>
                         <div class="dropSide">
                             <a href="https://wa.me/2349034648639"><img class=" w-50" src="./LOGIN IMAGES/whatsapp-removebg-preview.png" alt=""></a>
                             <a href="https://twitter.com/@iam_anigilaje"><img class="mt-1 w-50" src="./LOGIN IMAGES/Twitter-logo-removebg-preview.png" alt=""></a>
@@ -316,6 +316,16 @@
     let emailLabel = document.getElementById('emailLabel')
     let passwordInput = document.getElementById('passwordInput')
     let passwordLabel = document.getElementById('passwordLabel')
+    
+
+
+     //LOGIN LINKs FUNCTION
+     function google() {
+        window.location.href = "https://google.com"       
+    }
+    function twitter() {
+        window.location.href = "https://twitter.com"
+    }
 
     // NAME-LABEL ANIMATION
     nameInput.addEventListener('focus', function () {
@@ -409,16 +419,40 @@
     }
 
     //PROCEED TO LOG-IN PAGE FUNCTION
-    function proceed() {
+    // function proceed() {
        
-        if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
-            alert("Please Fill in all Fields")
-        } 
-        else {
-            window.location.assign("login.html")       
-        }
+    //     if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
+    //         alert("Please Fill in all Fields")
+    //     } 
+    //     else {
+    //         window.location.assign("login.html")       
+    //     }
         
-    }
+    // }
+
+
+    // SAVE THE REGISTRATION FORM AND CHECK THE EXISTING ONE 
+        function proceed() {
+            var registrations = getRegistrationFromStorage();
+
+            var existingRegistration = registrations.find(function(registration) {
+                return registration.nameInput.value === nameInput.value && registration.emailInput.value === emailInput.value && registration.passwordInput.value === passwordInput.value 
+            })
+
+            if (existingRegistration) {
+                alert ("You have already Registered with this information")
+                
+            } else {
+                
+            }
+
+            function getRegistrationFromStorage() {
+                var registrationString = localStorage.getItem("registrations")
+                return registrationString ? JSON.parse(registrationString) : [];
+                
+            }
+            
+        }
   
       // MOVE TO SIGN IN PAGE 
       function signIn() {
