@@ -443,14 +443,20 @@
                 alert ("You have already Registered with this information")
                 
             } else {
+                registrations.push({ name: nameInput.value, email: emailInput.value, password: passwordInput.value})
+                saveRegistrationToLocalStorage(registrations);
+                alert("Registration saved Successfully");
                 
             }
-
-            function getRegistrationFromStorage() {
+            document.getElementById("emailInput").reset();
+            
+        }
+        function getRegistrationFromStorage() {
                 var registrationString = localStorage.getItem("registrations")
-                return registrationString ? JSON.parse(registrationString) : [];
-                
+                return registrationString ? JSON.parse(registrationString) : [];        
             }
+        function saveRegistrationToLocalStorage(registrations) {
+            localStorage.setItem("registrations", JSON.stringify(registrations));
             
         }
   
