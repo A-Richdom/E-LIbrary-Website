@@ -178,6 +178,38 @@
         text-decoration: underline !important;
     }
     
+    .hoveredSection {
+       display: flex;
+    }
+
+    .left-container {
+      flex: 1;
+        }
+
+    .div-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .div-item {
+      padding: 10px;
+      border: 1px solid gray;
+      cursor: pointer;
+    }
+
+    .right-container {
+      flex: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #hovered-div {
+      display: none;
+      padding: 20px;
+      border: 1px solid gray;
+    }
+
 
     
     
@@ -251,7 +283,7 @@
                             <div class="carousel-item active ">
                                 <!-- <img class="img-fluid w-50 h-50" src="./landing 2.jpg" alt="Background Image"> -->
                                 <div class="carousel-caption gap-5">
-                                  <img class="img-fluid w-25" src="./europe.jpg" alt="">
+                                  <img class="img-fluid w-25" src="./LANDING IMAGES/europe.jpg" alt="">
                                   <div class="carouselText ">
                                     <span class="text-dark">APRIL, 2023</span>
                                     <h1 class="carouselTextHeadline text-dark">Europe and Central Asia Economic Update, Spring 2023: Weak Growth, High Inflation, and a Cost-of-Living Crisis</h1>
@@ -273,9 +305,9 @@
                               </div>
 
                             <div class="carousel-item ">
-                                <!-- <img class="img-fluid w-50 h-50" src="./landing 2.jpg" alt="Background Image"> -->
+                              
                                 <div class="carousel-caption gap-5">
-                                    <img class="img-fluid w-25" src="./africa.jpg" alt="">
+                                    <img class="img-fluid w-25" src="./LANDING IMAGES/africa.jpg" alt="">
                                     <div class="carouselText ">
                                       <span class="text-dark">JUNE, 2023</span>
                                       <h1 class="carouselTextHeadline text-dark">Digital Africa: Technological Transformation for Jobs</h1>
@@ -296,7 +328,7 @@
                             <div class="carousel-item">
                                 <!-- <img class="img-fluid w-50 h-50" src="./landing 2.jpg" alt="Background Image"> -->
                                 <div class="carousel-caption gap-5 ">
-                                    <img class="img-fluid w-25" src="./economics.jpg" alt="">
+                                    <img class="img-fluid w-25" src="./LANDING IMAGES/economics.jpg" alt="">
                                     <div class="carouselText ">
                                       <span class="text-dark">MAY, 2023</span>
                                       <h1 class="carouselTextHeadline text-dark">The Economics of Water Scarcity in the Middle East and North Africa: Institutional Solutions</h1>
@@ -328,19 +360,62 @@
         </div>
 
         </div>
- 
+
     </section>
+
+    <div class=" container hoveredSection col-md-10">
+        <div class="left-container">
+          <div class="div-list">
+            <div class="div-item" data-content="Content 1">
+              <img class="img-fluid w-25" src="./LANDING IMAGES/europe.jpg" alt="">
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore similique molestias maxime cumque at tempore in sunt quaerat, consequatur corrupti nobis laudantium voluptas facilis ipsam assumenda cupiditate ullam, temporibus voluptate.</p>
+            </div>
+
+            <div class="div-item" data-content="Content 2">
+              <img class="img-fluid w-25" src="./LANDING IMAGES/images.jpg" alt="">
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore similique molestias maxime cumque at tempore in sunt quaerat, consequatur corrupti nobis laudantium voluptas facilis ipsam assumenda cupiditate ullam, temporibus voluptate.</p>
+            </div>
+
+            <div class="div-item" data-content="Content 3">
+              <img class="img-fluid w-25" src="./LANDING IMAGES/africa.jpg" alt="">
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore similique molestias maxime cumque at tempore in sunt quaerat, consequatur corrupti nobis laudantium voluptas facilis ipsam assumenda cupiditate ullam, temporibus voluptate.</p>
+            </div>
+
+            <!-- Add more <div> items as needed -->
+          </div>
+        </div>
+
+        <div class="right-container">
+          <div class="bg-danger" id="hovered-div"></div>
+        </div>
+      
+    </div>
     
 </body>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.carousel-item').carousel-item({
-            interval: 3000,
+            interval: 1000,
             hover: 'pause'
-        
-        })
-        
+        })  
     })
+
+    //HOVERED SECTION FUNCTION
+    var divItems = document.querySelector(".div-item");
+    var hoveredDiv = document.querySelector("#hovered-div");
+
+    divItems.forEach(function(div) {
+      div.addEventListener('mouseover', function() {
+        var content = this.getAttribute('data-content');
+        hoveredDiv.innerHTML = content;
+        hoveredDiv.style.display = "block"; 
+      });
+      div.addEventListener('mouseout', function() {
+        hoveredDiv.style.display = "none"    
+      })
+      
+    });
+
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
