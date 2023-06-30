@@ -209,6 +209,33 @@
       padding: 20px;
       border: 1px solid gray;
     }
+    
+    .jumpUp {
+      position: fixed;
+      bottom: 65px;
+      right: 20px;
+      padding: 10px;
+      background-color: purple;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .jumpDown {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px;
+      background-color: red;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .item3 {
+      height: 100vh;
+      background-color: #0d6efd;
+      padding: 20px;
+    }
+    
 
 
     
@@ -360,6 +387,11 @@
         </div>
 
         </div>
+        <div class="jumpUp bg-danger rounded-circle" id="jumpUp" onclick="jumppingUp()"><i class="bi bi-arrow-up-circle"></i>
+        </div>
+        <div class="jumpDown bg-success rounded-circle" id="jumpDown" onclick="jumppingDown()"><i class="bi bi-arrow-down-circle"></i>
+        </div>
+        
 
     </section>
 
@@ -376,7 +408,7 @@
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore similique molestias maxime cumque at tempore in sunt quaerat, consequatur corrupti nobis laudantium voluptas facilis ipsam assumenda cupiditate ullam, temporibus voluptate.</p>
             </div>
 
-            <div class="div-item" data-content="Content 3">
+            <div class="div-item item3" data-content="Content 3">
               <img class="img-fluid w-25" src="./LANDING IMAGES/africa.jpg" alt="">
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore similique molestias maxime cumque at tempore in sunt quaerat, consequatur corrupti nobis laudantium voluptas facilis ipsam assumenda cupiditate ullam, temporibus voluptate.</p>
             </div>
@@ -399,6 +431,24 @@
             hover: 'pause'
         })  
     })
+    function jumppingUp() {
+      var navbar = document.querySelector('.navbar')
+      if (navbar) {
+        navbar.scrollIntoView({behavior: 'smooth'})
+        
+      }
+      
+    }
+   
+    function jumppingDown() {
+      var item3 = document.querySelector(".item3")
+      if (item3) {
+        item3.scrollIntoView({behavior: 'smooth'})
+        
+      }
+
+      
+    }
 
     //HOVERED SECTION FUNCTION
     var divItems = document.querySelector(".div-item");
