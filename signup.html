@@ -269,7 +269,7 @@
                     
                 </div> <br>
     
-                <div><button class="btn bg-primary text-white col-md-10 mt-2" onclick="proceed()">Continue</button></div>
+                <div  ><button onclick="proceed()" id="test" class="btn bg-primary text-white col-md-10 mt-2" >Continue</button></div>
                 
                 <div class="sign-upLink mt-4">Already a user?<span> <a class="text-primary text-decoration-none fw-bold" href="#" onclick="signIn()">Sign in</a></span></div>
               
@@ -316,8 +316,12 @@
     let emailLabel = document.getElementById('emailLabel')
     let passwordInput = document.getElementById('passwordInput')
     let passwordLabel = document.getElementById('passwordLabel')
-    
+    console.log('name');
 
+    function proceed(){
+        console.log('jee');
+    }
+   
 
      //LOGIN LINKs FUNCTION
      function google() {
@@ -417,48 +421,61 @@
             passwordInput.classList.remove('is-invalid')
         }     
     }
+   
 
     //PROCEED TO LOG-IN PAGE FUNCTION
-    // function proceed() {
+    function proceed() {
        
-    //     if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
-    //         alert("Please Fill in all Fields")
-    //     } 
-    //     else {
-    //         window.location.assign("login.html")       
-    //     }
+        if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
+            alert("Please Fill in all Fields")
+        } 
+        else {
+            window.location.assign("login.html")       
+        }
         
-    // }
+    }
 
 
     // SAVE THE REGISTRATION FORM AND CHECK THE EXISTING ONE 
-        function proceed() {
-            var registrations = getRegistrationFromStorage();
 
-            var existingRegistration = registrations.find(function(registration) {
-                return registration.nameInput.value === nameInput.value && registration.emailInput.value === emailInput.value && registration.passwordInput.value === passwordInput.value 
-            })
+            function proceed() {
+                const dataToAdd = {
+                    name: nameInput.value, email: emailInput.value, password: passwordInput.value
+                }
+                 const previousData = localStorage.getItem('dataToAdd')
+            }
 
-            if (existingRegistration) {
-                alert ("You have already Registered with this information")
+            const item = previousData.find(item =>)
+    
+        // function proceed() {
+        //     var registrations = getRegistrationFromStorage();
+
+        //     var existingRegistration = registrations.find(function(item) {
+        //         return item.nameInput.value === nameInput.value && item.emailInput.value === emailInput.value && item.passwordInput.value === passwordInput.value 
+        //     })
+
+        //     if (existingRegistration) {
+        //         alert ("You have already Registered with this information")
                 
-            } else {
-                registrations.push({ name: nameInput.value, email: emailInput.value, password: passwordInput.value})
-                saveRegistrationToLocalStorage(registrations);
-                alert("Registration saved Successfully");
+        //     } else {
+        //         registrations.push({ name: nameInput.value, email: emailInput.value, password: passwordInput.value})
+        //         saveRegistrationToLocalStorage(registrations);
+        //         alert("Registration saved Successfully");
                 
-            }
-            document.getElementById("emailInput").reset();
+        //     }
+        //     document.getElementById("emailInput").reset();
             
-        }
-        function getRegistrationFromStorage() {
-                var registrationString = localStorage.getItem("registrations")
-                return registrationString ? JSON.parse(registrationString) : [];        
-            }
-        function saveRegistrationToLocalStorage(registrations) {
-            localStorage.setItem("registrations", JSON.stringify(registrations));
+        // }
+        
+        // function getRegistrationFromStorage() {
+        //         var registrationString = localStorage.getItem("registrations")
+        //         return registrationString ? JSON.parse(registrationString) : [];        
+        //     }
+
+        // function saveRegistrationToLocalStorage(registrations) {
+        //     localStorage.setItem("registrations", JSON.stringify(registrations));
             
-        }
+        // }
   
       // MOVE TO SIGN IN PAGE 
       function signIn() {

@@ -66,7 +66,7 @@
         
     }
     
-    .label {
+    .emailLabel {
         position: absolute;
         top: 7%;
         left: 0.5%;
@@ -78,10 +78,23 @@
         font-family: 'Montserrat', sans-serif;
         font-family: 400;
     }
+    .passwordLabel {
+        position: absolute;
+        top: 7%;
+        left: -1%;
+        transform: translateY(-10%);
+        transform: translateX(85%);
+        transition: transform 0.4s ease-in-out;
+        color: #353535;
+        font-size: 14px;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 400;
+
+    }
     .zoom {
         transform: translateY(-95%) scale(0.8);
     }
-    .input {
+    .emailInput, .passwordInput {
         border: 0;
         outline: 0;
         border-bottom: 1px solid #0d6efd;
@@ -101,7 +114,7 @@
         background-color: white;
         height: 8rem;
         position: absolute;
-        bottom: 6px;
+        bottom: -6rem;
         text-align: center;
     }
     .footer a {
@@ -168,7 +181,7 @@
 
 </style>
 <body>
-    <section class="col-md-  ">
+    <section id="section" class="col-md-  ">
         <div class="container loginPage bg-white col-md-7 d-flex align-content-center
         justify-content-center rounded-2 shadow">
             <div class="loginWrapper col-md-7 border rounded-2 shad">
@@ -200,23 +213,27 @@
                 </div> 
     
                 <div class="input-container position-relative mt-5">
-                    <input type="email"  autocomplete="on"  name="" value="" multiple id="input" class="input col-md-10" list="emailSuggestions" required>
-                    <label for="email" id="label" class="label">Email</label>
+                    <input type="email"    name="" value="" multiple id="emailInput" class="emailInput col-md-10" list="emailSuggestions" >
+                    <label for="email" id="emailLabel" class="emailLabel">Email</label>
                     
                     <div class=" invalid-feedback">
                         Please Enter a valid Email 
                     </div>
-                </div> <br>
+                </div> 
+                <div class="input-container position-relative mt-5">
+                    <input type="password"   name="" id="passwordInput" value="" class="passwordInput col-md-10">
+                    <label for="password" id="passwordLabel" class="passwordLabel">Password</label>
+                    
+                    <div class="invalid-feedback">
+                        Incorect Password
+                    </div>
+                </div><br>
     
-                <div><button class="btn bg-primary text-white col-md-10 mt-2" onclick="proceed()">Continue</button></div>
+                <div><button class="btn bg-primary text-white col-md-10 mt-2" onclick="proceed()">Continue </button></div>
                 
                 <div class="sign-upLink mt-4">Are you a new user?<span> <a class="text-primary text-decoration-none fw-bold" href="#" onclick="signUp()" >Sign up</a></span></div>
                 
-                <div class="spinner d-none text-center">
-                    <div class="spinner-grow text-primary" id="spinner" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
+               
                
               
             </div>
@@ -252,7 +269,7 @@
         </div>
         
     </section>
-    
+    <div id="spinner" class="spinner-border col-md-7 align-content-center justify-content-center d-none"></div>
 </body>
 <script>
 
@@ -261,69 +278,108 @@
         window.location.href = "https://google.com"       
     }
     function twitter() {
-        window.location.href = "https://twitter.com"
-        
+        window.location.href = "https://twitter.com"   
     }
-    // INPUT LABEL ANIMATION
-    let label = document.getElementById('label')
-    let input = document.getElementById('input')
 
-    input.addEventListener('focus', function () {
-        label.classList.add('zoom') 
+
+    // EMAIL-LABEL ANIMATION
+    let emailLabel = document.getElementById('emailLabel')
+    let emailInput = document.getElementById('emailInput')
+
+    emailInput.addEventListener('focus', function () {
+
+        emailLabel.classList.add('zoom') 
     })
 
-    input.addEventListener('blur', function () {
-        if (!input.value) {
-        label.classList.remove('zoom')      
+    emailInput.addEventListener('blur', function () {
+        if (!emailInput.value) {
+        emailLabel.classList.remove('zoom')      
         }
     })
 
 
-    // INPUT TEXT BOX REGEX
-    document.querySelector('#input').addEventListener('blur', validateEmail)
-    function validateEmail() {
-        let input = document.querySelector('#input')
+    // PASSWORD-LABEL ANIMATION
+    let passwordLabel = document.getElementById('passwordLabel')
+    let passwordInput = document.getElementById('passwordInput')
+
+    passwordInput.addEventListener('focus', function () {
+        passwordLabel.classList.add('zoom') 
+    })
+
+    passwordInput.addEventListener('blur', function () {
+        if (!passwordInput.value) {
+        passwordLabel.classList.remove('zoom')      
+        }
+    })
+
+
+
+    function validateEmail(event) {
+        event.preventDefault()
+        let emailInput = document.querySelector('#emailInput')
         const re = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+\.+[a-zA-Z]{3}$/
        
-        if (!re.test(input.value)) {
-            input.classList.add('is-invalid')
+        if (!re.test(emailInput.value)) {
+            emailInput.classList.add('is-invalid')
             
         } 
         else {
-            input.classList.remove('is-invalid')         
+            emailInput.classList.remove('is-invalid')         
         }    
     }
 
-    //EMAIL INPUT-TEXT BOX STORAGE
-    let inputEmail = document.getElementById("input")
+        // EMAIL-INPUT TEXT BOX REGEX
+        document.querySelector('#emailInput').addEventListener('blur', validateEmail)
 
-        inputEmail.addEventListener("input", function () {
 
-        localStorage.setItem("email", inputEmail.value);
-    
-    })
+    function validatePassword(event) {
+        event.preventDefault()
+        let passwordInput = document.querySelector('#passwordInput')
+        const re = /^\d{5}$/
 
-        var savedEmail = JSON.parse(localStorage.getItem("email"))
+        if (!re.test(passwordInput.value)) {
+            passwordInput.classList.add('is-invalid')
 
-        if (savedEmail) {
-        inputEmail.value = savedEmail;
-    
+        } else {
+            passwordInput.classList.remove('is-invalid')      
+        } 
     }
 
-    // PROCEED TO NEXT PAGE FUNCTION
-    function proceed() {
-        
-    }
+        //PASSWORD-INPUT TEXT BOX REGEX
+        document.querySelector('#passwordInput').addEventListener('blur', validatePassword)
 
      // LINK TO SIGN-UP PAGE 
-     function signUp() {
-        document.querySelector(".spinner").style.display = "block"
+     function proceed() {
+        // document.querySelector(".spinner").style.display = "block"
+        window.location.href = "spinner.html"
+
+        
 
         setTimeout(function() {
             window.location.href = "signup.html";
-            
         }, 1000);          
     }
+
+
+    const data =[
+        {
+            name:'ahmed',
+            email: 'ahmed@gmail.com',
+            password:'12345'
+        },
+        {
+            name:'iyanu',
+            email: 'iyanu@gmail.com',
+            password:'12345'
+        },
+        {
+            name:'selim',
+            email: 'selim@gmail.com',
+            password:'12345'
+        }
+    ]
+    console.log(data.length);
+   
 
     // FOOTER THIRD LINK DROPDOWN STAYING
     const dropSideParent = document.querySelector('.dropSideParent')
