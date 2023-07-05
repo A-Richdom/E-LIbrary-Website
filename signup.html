@@ -316,13 +316,7 @@
     let emailLabel = document.getElementById('emailLabel')
     let passwordInput = document.getElementById('passwordInput')
     let passwordLabel = document.getElementById('passwordLabel')
-    console.log('name');
-
-    function proceed(){
-        console.log('jee');
-    }
    
-
      //LOGIN LINKs FUNCTION
      function google() {
         window.location.href = "https://google.com"       
@@ -350,6 +344,7 @@
             emailLabel.classList.remove('zoom')        
         }       
     })
+
 
      // PASSWORD-LABEL ANIMATION
     passwordInput.addEventListener('focus', function () {
@@ -424,64 +419,55 @@
    
 
     //PROCEED TO LOG-IN PAGE FUNCTION
-    function proceed() {
+    // function proceed() {
        
-        if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
-            alert("Please Fill in all Fields")
-        } 
-        else {
-            window.location.assign("login.html")       
-        }
-        
-    }
+    //     if (nameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
+    //         alert("Please Fill in all Fields")
+    //     } 
+    //     else {
+    //         window.location.assign("login.html")       
+    //     }
+    // }
 
 
-    // SAVE THE REGISTRATION FORM AND CHECK THE EXISTING ONE 
+    //PROCEED BUTTON FUNCTION
+        function proceed() {
+            const registrationData = getRegistrationFromStorage();
 
-            function proceed() {
-                const dataToAdd = {
+            const existingData = registrationData.find((item)=> 
+                 item.email === emailInput.value 
+            )
+
+            if (existingData) {
+                alert("You have already Registered with this information")
+            } else {
+                        const dataToAdd = {
                     name: nameInput.value, email: emailInput.value, password: passwordInput.value
                 }
-                 const previousData = localStorage.getItem('dataToAdd')
+                const newData = [...registrationData,dataToAdd]
+              
+                saveRegistrationToLocalStorage(newData);
+                alert("Registration saved Successfully");
+                //  do your navigation here
+            }
+            // document.getElementById("emailInput").reset(); 
+        }
+        
+        function getRegistrationFromStorage() {
+                var registrationString = localStorage.getItem("registrationData")
+                return registrationString ? JSON.parse(registrationString) : [];        
             }
 
-            const item = previousData.find(item =>)
-    
-        // function proceed() {
-        //     var registrations = getRegistrationFromStorage();
+        function saveRegistrationToLocalStorage(registrationData) {
+            localStorage.setItem("registrationData", JSON.stringify(registrationData)); 
+        }
 
-        //     var existingRegistration = registrations.find(function(item) {
-        //         return item.nameInput.value === nameInput.value && item.emailInput.value === emailInput.value && item.passwordInput.value === passwordInput.value 
-        //     })
-
-        //     if (existingRegistration) {
-        //         alert ("You have already Registered with this information")
-                
-        //     } else {
-        //         registrations.push({ name: nameInput.value, email: emailInput.value, password: passwordInput.value})
-        //         saveRegistrationToLocalStorage(registrations);
-        //         alert("Registration saved Successfully");
-                
-        //     }
-        //     document.getElementById("emailInput").reset();
-            
-        // }
-        
-        // function getRegistrationFromStorage() {
-        //         var registrationString = localStorage.getItem("registrations")
-        //         return registrationString ? JSON.parse(registrationString) : [];        
-        //     }
-
-        // function saveRegistrationToLocalStorage(registrations) {
-        //     localStorage.setItem("registrations", JSON.stringify(registrations));
-            
-        // }
   
-      // MOVE TO SIGN IN PAGE 
+      // LINK TO SIGN IN PAGE 
       function signIn() {
         window.location.assign("login.html")
-        
       }
+
 
         // FOOTER THIRD LINK DROPDOWN STAYING
     const dropSideParent = document.querySelector('.dropSideParent')

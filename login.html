@@ -287,7 +287,8 @@
     let emailInput = document.getElementById('emailInput')
 
     emailInput.addEventListener('focus', function () {
-
+        // if (emailInput.value) {
+        // }
         emailLabel.classList.add('zoom') 
     })
 
@@ -303,7 +304,9 @@
     let passwordInput = document.getElementById('passwordInput')
 
     passwordInput.addEventListener('focus', function () {
-        passwordLabel.classList.add('zoom') 
+        // if (passwordInput) {
+        // }  
+        passwordLabel.classList.add('zoom')
     })
 
     passwordInput.addEventListener('blur', function () {
@@ -313,25 +316,23 @@
     })
 
 
-
+    // EMAIL-INPUT TEXT BOX REGEX
     function validateEmail(event) {
         event.preventDefault()
         let emailInput = document.querySelector('#emailInput')
         const re = /^[a-zA-Z0-9]+@+[a-zA-Z0-9]+\.+[a-zA-Z]{3}$/
        
         if (!re.test(emailInput.value)) {
-            emailInput.classList.add('is-invalid')
-            
+            emailInput.classList.add('is-invalid')      
         } 
         else {
             emailInput.classList.remove('is-invalid')         
         }    
     }
-
-        // EMAIL-INPUT TEXT BOX REGEX
         document.querySelector('#emailInput').addEventListener('blur', validateEmail)
 
 
+     //PASSWORD-INPUT TEXT BOX REGEX
     function validatePassword(event) {
         event.preventDefault()
         let passwordInput = document.querySelector('#passwordInput')
@@ -344,42 +345,54 @@
             passwordInput.classList.remove('is-invalid')      
         } 
     }
-
-        //PASSWORD-INPUT TEXT BOX REGEX
         document.querySelector('#passwordInput').addEventListener('blur', validatePassword)
 
-     // LINK TO SIGN-UP PAGE 
+
+     // PROCEED BUTTON FUNCTION 
      function proceed() {
-        // document.querySelector(".spinner").style.display = "block"
-        window.location.href = "spinner.html"
-
         
+        // document.querySelector(".spinner").style.display = "block"
+        
+        const registrationData = getRegistrationFromStorage();
 
-        setTimeout(function() {
-            window.location.href = "signup.html";
-        }, 1000);          
+        const existingData = registrationData.find((item)=> 
+              item.email === emailInput.value && item.password === passwordInput.value
+         )
+
+        // setTimeout(function() {
+        //     }, 500); 
+
+        if (existingData){
+
+            alert('Login successful')
+    
+        }
+        
+    
+        else  {
+            window.location.href = "spinner.html"
+
+            // window.location.href = "signup.html";
+        } 
     }
 
 
-    const data =[
-        {
-            name:'ahmed',
-            email: 'ahmed@gmail.com',
-            password:'12345'
-        },
-        {
-            name:'iyanu',
-            email: 'iyanu@gmail.com',
-            password:'12345'
-        },
-        {
-            name:'selim',
-            email: 'selim@gmail.com',
-            password:'12345'
+    function getRegistrationFromStorage() {
+                var registrationString = localStorage.getItem("registrationData")
+                return registrationString ? JSON.parse(registrationString) : [];        
+            }
+
+        function saveRegistrationToLocalStorage(registrationData) {
+            localStorage.setItem("registrationData", JSON.stringify(registrationData));     
         }
-    ]
-    console.log(data.length);
-   
+
+
+    //LINK TO SIGN UP PAGE
+    function signUp() {
+        window.location.assign('signup.html')
+        
+    }
+
 
     // FOOTER THIRD LINK DROPDOWN STAYING
     const dropSideParent = document.querySelector('.dropSideParent')
